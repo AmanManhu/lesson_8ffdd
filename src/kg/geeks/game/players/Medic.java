@@ -1,7 +1,9 @@
 package kg.geeks.game.players;
 
 public class Medic extends Hero {
-    private final int healPoints;
+    public int healPoints;
+
+
 
     public Medic(String name, int health, int damage, int healPoints) {
         super(name, health, damage, SuperAbility.HEAL);
@@ -16,4 +18,5 @@ public class Medic extends Hero {
             }
         }
     }
+
 }

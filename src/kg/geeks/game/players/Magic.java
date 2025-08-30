@@ -1,24 +1,23 @@
 package kg.geeks.game.players;
 
+import kg.geeks.game.logic.RPG_Game;
+
 public class Magic extends Hero {
-    private int round = 0;
-    public Magic(String name, int health, int damage) {
+    private int boost;
+
+    public Magic(String name, int health, int damage, int boost) {
         super(name, health, damage, SuperAbility.BOOST);
+        this.boost = boost;
     }
+
     @Override
     public void applySuperPower(Boss boss, Hero[] heroes) {
-        // TODO Here will be implementation of boosting
-
-
-    }
-    public void SuperPower(Boss boss, Hero[] heroes) {
-        round++;
-        if (round <= 4){
-            for (Hero hero : heroes) {
-                if (hero.getHealth() > 0 && hero != this){
-                    hero.setDamage(hero.getDamage() + 10);
-                }
+        if (RPG_Game.getRoundNumber() < 4 && this.getHealth() > 0) {
+            for (int i = 0; i < heroes.length; i++) {
+                heroes[i].setDamage(heroes[i].getDamage() + boost);
             }
+            System.out.println("Magic increased damage");
         }
+
     }
 }
